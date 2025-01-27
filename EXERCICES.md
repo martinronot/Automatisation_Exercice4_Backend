@@ -4,7 +4,7 @@ Il faut créer rapidement une petite application, avec les commande proposer par
 Vous avez la liste des maker disponible via la commande suivante:
 ```bash
 # Avec docker
-docker compose php bin/console make
+docker compose run --rm php bin/console make
 
 # Sans docker
 php bin/console make
