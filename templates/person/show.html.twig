@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la Personne{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1>Détails de la Personne</h1>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ person.firstName }} {{ person.lastName }}</h5>
+                <p class="card-text">
+                    <strong>Email:</strong> {{ person.email }}<br>
+                    <strong>Date de naissance:</strong> {{ person.birthDate|date('Y-m-d') }}
+                </p>
+
+                <a href="{{ path('app_person_edit', {'id': person.id}) }}" class="btn btn-warning">Éditer</a>
+                <form method="post" action="{{ path('app_person_delete', {'id': person.id}) }}" style="display: inline-block">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ person.id) }}">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette personne ?')">Supprimer</button>
+                </form>
+                <a href="{{ path('app_person_index') }}" class="btn btn-secondary">Retour à la liste</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

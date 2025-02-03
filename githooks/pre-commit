@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Exécuter le script de tests
+./run-tests.sh
+
+# Si les tests échouent, empêcher le commit
+if [ $? -ne 0 ]; then
+    echo "Tests failed! Commit aborted."
+    exit 1
+fi
